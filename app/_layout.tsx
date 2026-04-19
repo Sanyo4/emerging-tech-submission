@@ -7,7 +7,6 @@ import { seedDatabase } from '../data/seed';
 import { AuthProvider, useAuth } from '../services/authContext';
 import { ThemeProvider, useTheme } from '../theme';
 import { Colors, FontSize } from '../constants/theme';
-import { initAccessibilityListener } from '../utils/accessibility';
 
 function AuthGate() {
   const { isAuthenticated, isNewUser, isOnboarded, isLoading } = useAuth();
@@ -55,11 +54,6 @@ export default function RootLayout() {
   useEffect(() => {
     initApp();
   }, [initApp]);
-
-  useEffect(() => {
-    const cleanup = initAccessibilityListener();
-    return cleanup;
-  }, []);
 
   if (error) {
     return (

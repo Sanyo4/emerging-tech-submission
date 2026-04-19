@@ -41,8 +41,8 @@ const MOOD_DESCRIPTION: Record<PetMood, string> = {
 const STREAK_MILESTONES: { days: number; label: string; impact: string }[] = [
   { days: 3, label: '3-day streak', impact: 'Unlocks +5 care points bonus' },
   { days: 7, label: '7-day streak', impact: 'Pet mood range widens — thriving reachable' },
-  { days: 14, label: '14-day streak', impact: 'Evolution path leans flourishing' },
-  { days: 30, label: '30-day streak', impact: 'Elder tier — full narrative arc unlocked' },
+  { days: 14, label: '14-day streak', impact: 'Mood stability extends — resilient to off days' },
+  { days: 30, label: '30-day streak', impact: 'Long-term rhythm established — full care-points arc' },
 ];
 
 export default function DemoHub() {

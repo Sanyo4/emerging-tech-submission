@@ -955,18 +955,16 @@ async function handleCheckPetStatus(
 
     const petName = pet?.name ?? 'Buddy';
     const mood = pet?.current_state ?? 'neutral';
-    const tier = pet?.evolution_tier ?? 'egg';
     const streak = profile?.streak_days ?? 0;
 
     const moodLabel = mood.charAt(0).toUpperCase() + mood.slice(1);
-    const tierLabel = tier.charAt(0).toUpperCase() + tier.slice(1);
 
     return {
       functionName: 'check_pet_status',
       success: true,
       params,
-      data: { petName, mood, health, tier, streak },
-      responseText: `${petName} is ${moodLabel} with ${health} health points. ${streak}-day streak. Stage: ${tierLabel}.`,
+      data: { petName, mood, health, streak },
+      responseText: `${petName} is ${moodLabel} with ${health} health points. ${streak}-day streak.`,
       contentType: 'pet_status',
       xpEarned: 0,
     };

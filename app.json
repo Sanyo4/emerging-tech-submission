@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "micro-lessons-app",
-    "slug": "micro-lessons-app",
+    "name": "pluto",
+    "slug": "pluto",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,21 +22,21 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.microlessonsapp"
+      "package": "com.anonymous.pluto"
     },
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
-    "scheme": "micro-lessons-app",
+    "scheme": "pluto",
     "plugins": [
       "expo-router",
       "expo-sqlite",
       [
         "expo-speech-recognition",
         {
-          "microphonePermission": "Micro Lessons needs microphone access so you can log expenses by voice.",
-          "speechRecognitionPermission": "Micro Lessons needs speech recognition to convert your voice to text."
+          "microphonePermission": "Pluto needs microphone access so you can log expenses by voice.",
+          "speechRecognitionPermission": "Pluto needs speech recognition to convert your voice to text."
         }
       ]
     ]

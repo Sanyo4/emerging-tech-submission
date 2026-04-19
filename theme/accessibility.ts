@@ -7,7 +7,6 @@ export interface AccessibilitySettings {
   highContrast: boolean;
   reducedMotion: boolean;
   simplifiedLanguage: boolean;
-  verboseScreenReader: boolean;
   textSize: TextSizePreset;
   hapticIntensity: 'off' | 'light' | 'medium' | 'strong';
   tonalVolume: 'off' | 'quiet' | 'normal' | 'loud';
@@ -19,7 +18,6 @@ export const defaultAccessibility: AccessibilitySettings = {
   highContrast: false,
   reducedMotion: false,
   simplifiedLanguage: false,
-  verboseScreenReader: false,
   textSize: 'medium',
   hapticIntensity: 'medium',
   tonalVolume: 'normal',

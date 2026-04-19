@@ -86,7 +86,6 @@ export function ThemeProvider({ children, onReady }: ThemeProviderProps) {
           highContrast: prefs.high_contrast === 1,
           reducedMotion: prefs.reduced_motion === 1,
           simplifiedLanguage: prefs.simplified_language === 1,
-          verboseScreenReader: prefs.verbose_screenreader === 1,
           textSize: prefs.text_size as AccessibilitySettings['textSize'],
           hapticIntensity: prefs.haptic_intensity as AccessibilitySettings['hapticIntensity'],
           tonalVolume: prefs.tonal_volume as AccessibilitySettings['tonalVolume'],
@@ -109,7 +108,6 @@ export function ThemeProvider({ children, onReady }: ThemeProviderProps) {
       if (partial.highContrast !== undefined) dbUpdate.high_contrast = partial.highContrast ? 1 : 0;
       if (partial.reducedMotion !== undefined) dbUpdate.reduced_motion = partial.reducedMotion ? 1 : 0;
       if (partial.simplifiedLanguage !== undefined) dbUpdate.simplified_language = partial.simplifiedLanguage ? 1 : 0;
-      if (partial.verboseScreenReader !== undefined) dbUpdate.verbose_screenreader = partial.verboseScreenReader ? 1 : 0;
       if (partial.textSize !== undefined) dbUpdate.text_size = partial.textSize;
       if (partial.hapticIntensity !== undefined) dbUpdate.haptic_intensity = partial.hapticIntensity;
       if (partial.tonalVolume !== undefined) dbUpdate.tonal_volume = partial.tonalVolume;
