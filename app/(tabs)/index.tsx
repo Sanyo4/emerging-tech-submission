@@ -37,13 +37,11 @@ import { conversationContext } from '../../services/conversationContext';
 import { executeFunctionCall } from '../../services/functionExecutor';
 import { recalculatePetState, getCurrentPetState, type PetMood } from '../../services/petState';
 import { recordEngagement } from '../../services/engagement';
-import { checkEvolution } from '../../services/petEvolution';
 import { getTransactionReaction, getDailyCheckInReaction } from '../../services/petReactions';
 import { resolveDialogue } from '../../services/petDialogue';
 import { playFullPetFeedback, speakQuestOffer, stopAllAudio } from '../../services/audioFeedback';
 import { playShakeDetectedHaptic } from '../../services/haptics';
 import { XP_AWARDS } from '../../utils/gamification';
-import { announceForScreenReader } from '../../utils/accessibility';
 import { buildContentSpeech } from '../../utils/contentSpeech';
 import { getSuggestionChips, type ChipState } from '../../utils/suggestionChips';
 import { useShakeDetector } from '../../hooks/useShakeDetector';
@@ -137,7 +135,6 @@ export default function HomeScreen() {
         // behind showLesson, leaving a race window).
         setDialogue('');
         conversationContext.startLessonOffer();
-        announceForScreenReader(`New quest. ${lesson.challengeTemplate.title}.`);
         speakQuestOffer(lesson, handleTTSDone);
       })();
     }, delay);
@@ -234,9 +231,6 @@ export default function HomeScreen() {
       } catch {}
     })();
 
-    // Check evolution
-    checkEvolution().catch(() => {});
-
     return () => {
       mounted = false;
       if (lessonOfferTimeoutRef.current) {
@@ -248,7 +242,6 @@ export default function HomeScreen() {
 
   const showXPPopup = (amount: number) => {
     setXpPopup({ amount, visible: true });
-    announceForScreenReader(`Earned ${amount} care points`);
     setTimeout(() => setXpPopup({ amount: 0, visible: false }), 1500);
   };
 

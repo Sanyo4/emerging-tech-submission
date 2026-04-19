@@ -114,7 +114,7 @@ The voice-first pipeline is the spine of the app:
   flexible budget → persona → plan → accessibility → PIN → done).
 - PIN-based local auth (SHA-256 hashed, session per launch).
 - Gamification: care-points, levels, streaks, quests, challenges.
-- Pet evolution + mood history.
+- Pet mood history.
 - Settings screen with accessibility toggles (haptic intensity, TTS rate,
   screen-reader hints).
 
@@ -123,7 +123,7 @@ The voice-first pipeline is the spine of the app:
 ## Folder layout
 
 ```
-micro-lessons-app-submission/
+pluto-submission/
 ├── app/                    Expo Router screens
 │   ├── _layout.tsx           Root — AuthProvider + auth gate
 │   ├── login.tsx             PIN entry
@@ -151,7 +151,6 @@ micro-lessons-app-submission/
 │   ├── audioFeedback.ts        TTS + coordinated multi-sensory cues
 │   ├── haptics.ts              Haptic patterns by budget state
 │   ├── tonalAudio.ts           Tonal cue cues
-│   ├── petEvolution.ts         Pet state / evolution rules
 │   └── petReactions.ts         Dialogue template selection
 ├── data/                   Config: plans, lessons, function defs
 ├── theme/                  Tokens: colors, typography, spacing

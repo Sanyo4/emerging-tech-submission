@@ -1,5 +1,5 @@
 {
-  "name": "micro-lessons-app",
+  "name": "pluto",
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
@@ -8,7 +8,8 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "proxy": "node scripts/cors-proxy.js",
-    "dev:web": "npx concurrently \"npm run proxy\" \"npm run web\""
+    "dev:web": "npx concurrently \"npm run proxy\" \"npm run web\"",
+    "lint": "expo lint"
   },
   "dependencies": {
     "@expo-google-fonts/jetbrains-mono": "^0.4.1",
@@ -42,6 +43,8 @@
   },
   "devDependencies": {
     "@types/react": "~19.2.2",
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~55.0.0",
     "typescript": "~5.9.2"
   },
   "private": true

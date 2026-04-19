@@ -4,7 +4,6 @@ import { View, Text, ScrollView, StyleSheet, Pressable, TextInput, Alert } from 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFocusEffect, router } from 'expo-router';
 import { getPetProfile, getUserProfile, updatePetProfile, getAppSettings, type PetProfile, type UserProfile, type AppSettings } from '../../services/database';
-import { getPetAge } from '../../services/petEvolution';
 import { getPlanById } from '../../data/plans';
 import { useAuth } from '../../services/authContext';
 import { useTheme } from '../../theme';
@@ -15,17 +14,15 @@ export default function ProfileScreen() {
   const [pet, setPet] = useState<PetProfile | null>(null);
   const [user, setUser] = useState<UserProfile | null>(null);
   const [settings, setSettings] = useState<AppSettings | null>(null);
-  const [petAge, setPetAge] = useState(0);
   const [isEditingName, setIsEditingName] = useState(false);
   const [editName, setEditName] = useState('');
 
   useFocusEffect(
     useCallback(() => {
-      Promise.all([getPetProfile(), getUserProfile(), getAppSettings(), getPetAge()]).then(([p, u, s, a]) => {
+      Promise.all([getPetProfile(), getUserProfile(), getAppSettings()]).then(([p, u, s]) => {
         setPet(p);
         setUser(u);
         setSettings(s);
-        setPetAge(a);
         if (p) setEditName(p.name);
       });
     }, [])
@@ -50,9 +47,6 @@ export default function ProfileScreen() {
   const mono = theme.fontsLoaded ? theme.fonts.monospace : theme.fonts.monospaceFallback;
   const plan = settings?.selected_plan_id ? getPlanById(settings.selected_plan_id) : null;
 
-  const tierLabel = (pet?.evolution_tier ?? 'egg').charAt(0).toUpperCase() + (pet?.evolution_tier ?? 'egg').slice(1);
-  const pathLabel = (pet?.evolution_path ?? 'standard').charAt(0).toUpperCase() + (pet?.evolution_path ?? 'standard').slice(1);
-
   return (
     <SafeAreaView style={[styles.safe, { backgroundColor: theme.colors.base.background }]} edges={['top']}>
       <View style={styles.header}>
@@ -68,9 +62,6 @@ export default function ProfileScreen() {
           </Text>
 
           <InfoRow mono={mono} color={theme.colors.base.terminalText} label="Name:" value={pet?.name ?? 'Buddy'} />
-          <InfoRow mono={mono} color={theme.colors.base.terminalText} label="Age:" value={`${petAge} days`} />
-          <InfoRow mono={mono} color={theme.colors.base.terminalText} label="Stage:" value={tierLabel} />
-          <InfoRow mono={mono} color={theme.colors.base.terminalText} label="Path:" value={pathLabel} />
           <InfoRow mono={mono} color={theme.colors.base.terminalText} label="Streak:" value={`${user?.streak_days ?? 0} days`} />
           <InfoRow mono={mono} color={theme.colors.base.terminalText} label="Level:" value={`${user?.level ?? 1}`} />
           <InfoRow mono={mono} color={theme.colors.base.terminalText} label="Plan:" value={plan?.title ?? 'Default'} />

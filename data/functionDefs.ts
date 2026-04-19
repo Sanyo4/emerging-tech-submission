@@ -165,7 +165,7 @@ export function getUserFacingFunctions(categoryIds: string[]): FunctionDefinitio
     },
     {
       name: 'check_pet_status',
-      description: 'Check the pet\'s current mood, health, streak, and evolution. Use when the user asks how the pet is doing.',
+      description: 'Check the pet\'s current mood, health, and streak. Use when the user asks how the pet is doing.',
       parameters: {
         type: 'object',
         properties: {},

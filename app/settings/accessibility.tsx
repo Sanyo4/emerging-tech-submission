@@ -59,8 +59,6 @@ export default function AccessibilitySettingsScreen() {
 
           <TermToggle mono={mono} color={theme.colors.base.terminalText} label="Simplified:" value={accessibility.simplifiedLanguage}
             onChange={(v) => toggle('simplifiedLanguage', v)} tint={theme.colors.interactive.primary} />
-          <TermToggle mono={mono} color={theme.colors.base.terminalText} label="Verbose reader:" value={accessibility.verboseScreenReader}
-            onChange={(v) => toggle('verboseScreenReader', v)} tint={theme.colors.interactive.primary} />
         </View>
       </ScrollView>
     </SafeAreaView>

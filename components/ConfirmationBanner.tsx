@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Animated, { FadeInDown, FadeOut } from 'react-native-reanimated';
 import { Colors, Spacing, FontSize, BorderRadius } from '../constants/theme';
-import { announceForScreenReader, getAccessibleTimeout } from '../utils/accessibility';
 import { playSuccessHaptic } from '../services/haptics';
 
 export type BannerType = 'success' | 'warning' | 'info' | 'error';
@@ -37,13 +36,9 @@ export default function ConfirmationBanner({
   useEffect(() => {
     if (!visible) return;
 
-    announceForScreenReader(message);
     playSuccessHaptic();
 
-    let timer: ReturnType<typeof setTimeout>;
-    getAccessibleTimeout(8000).then((timeout) => {
-      timer = setTimeout(onDismiss, timeout);
-    });
+    const timer = setTimeout(onDismiss, 8000);
     return () => clearTimeout(timer);
   }, [visible, message, onDismiss]);
 
